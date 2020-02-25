@@ -30,5 +30,9 @@ export class UserService {
     this.http.post(`${this.uri}/add`, user)
         .subscribe(res => console.log('Done'));
   }
+
+  deleteUser(id:number){
+    this.http.delete(`${this.uri}/`+id);
+  }
   
 }

@@ -15,14 +15,19 @@ export class UserListComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private bs: UserService) { }
+    private userS: UserService) { }
 
   ngOnInit() {
-    this.bs
+    this.userS
       .getUsers()
       .subscribe((data: User[]) => {
         this.users = data;
     });
+  }
+
+  deleteUser(id:number, i){
+    this.users[i]=null;
+    this.userS.deleteUser(id);
   }
 
 
