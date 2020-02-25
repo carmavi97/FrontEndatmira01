@@ -18,16 +18,22 @@ export class UserListComponent implements OnInit {
     private userS: UserService) { }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  async deleteUser(id:number, i){
+    await this.userS
+    .deleteUser(id)
+    .subscribe();
+    this.refresh();
+  }
+
+  refresh(){
     this.userS
       .getUsers()
       .subscribe((data: User[]) => {
         this.users = data;
     });
-  }
-
-  deleteUser(id:number, i){
-    this.users[i]=null;
-    this.userS.deleteUser(id);
   }
 
 
